@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#006437">
+<title>Feliz Aniversário, Irmão! 💚</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#006437; --green2:#008f4c; --dark:#003b24;
+  --white:#fff; --gold:#d4af37;
+}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;font-family:Arial,Helvetica,sans-serif;color:#fff;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(0,180,95,.35),transparent 30%),
+    radial-gradient(circle at 80% 90%,rgba(212,175,55,.16),transparent 25%),
+    linear-gradient(135deg,#001e12,#003b24 48%,#006437);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;
+  background-image:linear-gradient(45deg,transparent 45%,#fff 46%,transparent 47%);
+  background-size:32px 32px;
+}
+.stars{position:fixed;inset:0;pointer-events:none;z-index:0}
+.star{position:absolute;width:3px;height:3px;background:#fff;border-radius:50%;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{from{opacity:.15;transform:scale(.7)}to{opacity:1;transform:scale(1.4)}}
+
+.intro{
+  min-height:100svh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:24px;position:relative;z-index:2;
+}
+.card{
+  width:min(720px,100%);padding:clamp(28px,7vw,58px) clamp(20px,6vw,45px);
+  border-radius:30px;background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(14px);
+  box-shadow:0 25px 80px rgba(0,0,0,.38);animation:appear 1s ease;
+}
+.crest{
+  width:105px;height:105px;border:4px solid var(--gold);border-radius:50%;
+  margin:0 auto 18px;display:grid;place-items:center;
+  background:linear-gradient(145deg,#fff,#dfeee7);color:var(--green);
+  box-shadow:0 0 35px rgba(212,175,55,.35);
+  font-size:42px;font-weight:900;
+}
+.crest small{display:block;font-size:12px;letter-spacing:2px}
+h1{font-size:clamp(2.3rem,9vw,5rem);line-height:1.05;margin-bottom:14px}
+.green{color:#8ff0bd}.gold{color:#f2d477}
+.subtitle{font-size:clamp(1rem,3.8vw,1.25rem);line-height:1.6;color:#e7fff1;margin-bottom:28px}
+.btn{
+  border:0;cursor:pointer;padding:16px 26px;border-radius:999px;
+  font-size:1.05rem;font-weight:800;color:#003b24;
+  background:linear-gradient(135deg,#fff,#bff4d8);
+  box-shadow:0 12px 35px rgba(0,0,0,.25);transition:.25s;
+}
+.btn:active{transform:scale(.96)}
+.hint{font-size:.82rem;opacity:.75;margin-top:14px}
+
+.content{display:none;position:relative;z-index:2;max-width:1000px;margin:auto;padding:35px 18px 20px}
+.content.show{display:block;animation:appear .8s ease}
+.section{
+  margin-bottom:22px;padding:clamp(22px,5vw,36px);
+  border-radius:24px;background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px);
+  box-shadow:0 15px 45px rgba(0,0,0,.18);
+}
+.section h2{text-align:center;font-size:clamp(1.5rem,5vw,2rem);margin-bottom:20px}
+.message{text-align:center;font-size:clamp(1rem,3.5vw,1.15rem);line-height:1.8;color:#effff6}
+.highlight{color:#8ff0bd;font-weight:800}
+.palmeiras-title{color:#dfffea}
+.badge-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:18px 0}
+.badge{
+  padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);font-weight:700
+}
+
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.photo{
+  min-height:210px;border-radius:18px;overflow:hidden;display:grid;place-items:center;
+  background:linear-gradient(135deg,#006437,#00a85a);border:2px solid rgba(255,255,255,.13);
+  font-size:3.5rem;position:relative
+}
+.photo img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+
+.music{text-align:center}
+.music-box{
+  background:rgba(0,0,0,.16);border-radius:20px;padding:20px;
+  border:1px solid rgba(255,255,255,.12)
+}
+.music button{margin-top:14px;background:#dfffea;color:#004326}
+audio{display:none}
+
+footer{text-align:center;padding:15px 10px 35px;color:#c8e8d5;font-size:.9rem}
+
+.confetti{position:fixed;top:-30px;z-index:999;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+.balloon{position:fixed;bottom:-100px;font-size:42px;z-index:1;animation:up 8s linear forwards;pointer-events:none}
+@keyframes up{to{transform:translateY(-120vh) rotate(20deg)}}
+@keyframes appear{from{opacity:0;transform:translateY(25px) scale(.98)}to{opacity:1;transform:none}}
+
+@media(max-width:650px){
+  .content{padding:20px 12px 10px}
+  .section{padding:22px 16px;border-radius:20px}
+  .photos{grid-template-columns:1fr}
+  .photo{min-height:180px}
+  .crest{width:88px;height:88px;font-size:34px}
+}
+</style>
+</head>
+
+<body>
+<div class="stars" id="stars"></div>
+
+<main class="intro" id="intro">
+  <div class="card">
+    <div class="crest">P<br><small>VERDE</small></div>
+    <h1>Feliz Aniversário! <span class="green">💚</span></h1>
+    <p class="subtitle">
+      Preparei uma surpresa especial para você.<br>
+      <strong>Hoje é dia de comemorar em grande estilo! 🏆</strong>
+    </p>
+    <button class="btn" id="openButton" onclick="openGift()">🎁 Abrir a surpresa</button>
+    <p class="hint">Toque no botão para entrar e liberar a música.</p>
+  </div>
+</main>
+
+<main class="content" id="content">
+
+  <section class="section">
+    <h2 class="palmeiras-title">💚 Hoje é o seu dia! 💚</h2>
+    <p class="message">
+      Feliz aniversário, <span class="highlight">MEU IRMÃO!</span> 🎂
+      <br><br>
+      Que essa nova fase seja cheia de saúde, felicidade, conquistas e
+      muitos momentos inesquecíveis.
+      <br><br>
+      E como não poderia faltar: <strong class="gold">AVANTI PALESTRA! 🟢⚪</strong>
+    </p>
+    <div class="badge-row">
+      <span class="badge">🟢 Palmeiras</span>
+      <span class="badge">⚪ Família</span>
+      <span class="badge">🏆 Conquistas</span>
+      <span class="badge">💚 Alegria</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🏟️ Paixão pelo Verdão</h2>
+    <p class="message">
+      Que nunca faltem motivos para comemorar, seja na vida ou acompanhando
+      o <strong class="highlight">Verdão</strong>.
+      <br><br>
+      <span class="gold">“Avanti, Palestra!”</span> 💚🤍
+    </p>
+  </section>
+
+ <section class="section">
+  <h2>📸 Nossas Memórias</h2>
+
+  <div class="photos">
+    <div class="photo">
+      <img src="1.jpeg" alt="Nossa memória 1">
+    </div>
+
+    <div class="photo">
+      <img src="2.jpeg" alt="Nossa memória 2">
+    </div>
+
+    <div class="photo">
+      <img src="3.jpeg" alt="Nossa memória 3">
+    </div>
+  </div>
+
+  <p class="message" style="margin-top:18px">
+    Cada foto guarda um momento especial que quero lembrar para sempre. 💚
+  </p>
+</section>
+
+  <section class="section music">
+    <h2>🎵 Música da surpresa</h2>
+    <div class="music-box">
+      <p class="message">
+        A música é iniciada quando você abre a surpresa.
+        <br>
+        Se o navegador do celular bloquear o áudio automático, toque em “Tocar”.
+      </p>
+      <button class="btn" id="musicButton" onclick="toggleMusic()">▶️ Tocar música</button>
+      <audio id="music" preload="auto" playsinline loop>
+        <source src="1.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>💚 Para você</h2>
+    <p class="message">
+      Independentemente de onde a vida levar a gente, espero que você sempre
+      saiba que pode contar comigo.
+      <br><br>
+      <span class="highlight">Feliz aniversário, irmão! 🎂💚</span>
+      <br><br>
+      Que venham muitos e muitos anos pela frente — com saúde, felicidade,
+      família reunida e muitos motivos para gritar <strong class="gold">AVANTI PALESTRA!</strong> 🏆
+    </p>
+  </section>
+
+  <footer>Feito com ❤️, verde e branco especialmente para você.</footer>
+</main>
+
+<script>
+const stars=document.getElementById("stars");
+for(let i=0;i<90;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*2+"s";
+  stars.appendChild(s);
+}
+
+function openGift(){
+  document.getElementById("intro").style.display="none";
+  document.getElementById("content").classList.add("show");
+  createConfetti();
+  createBalloons();
+  window.scrollTo({top:0,behavior:"smooth"});
+
+  // O clique no botão é uma ação do usuário, então o navegador normalmente
+  // permite iniciar o áudio aqui.
+  const music=document.getElementById("music");
+  music.volume=0.75;
+  music.play().then(()=>{
+    document.getElementById("musicButton").textContent="⏸️ Pausar música";
+  }).catch(()=>{
+    document.getElementById("musicButton").textContent="▶️ Tocar música";
+  });
+}
+
+function toggleMusic(){
+  const music=document.getElementById("music");
+  const button=document.getElementById("musicButton");
+  if(music.paused){
+    music.play().then(()=>button.textContent="⏸️ Pausar música");
+  }else{
+    music.pause();
+    button.textContent="▶️ Tocar música";
+  }
+}
+
+function createConfetti(){
+  const symbols=["🎉","✨","🎊","💚","⭐","🤍"];
+  for(let i=0;i<90;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    c.style.left=Math.random()*100+"vw";
+    c.style.animationDuration=(Math.random()*3+3)+"s";
+    c.style.fontSize=(Math.random()*14+10)+"px";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),7000);
+  }
+}
+
+function createBalloons(){
+  ["🟢","⚪","🟢","⚪","🟢"].forEach((emoji,i)=>{
+    const b=document.createElement("div");
+    b.className="balloon";
+    b.textContent=emoji;
+    b.style.left=(8+i*19)+"%";
+    b.style.animationDelay=(i*.65)+"s";
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),9000);
+  });
+}
+</script>
+</body>
+</html>
+
